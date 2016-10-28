@@ -51,7 +51,9 @@ public class GLImage {
         final Uri uri = src;
         ImageRequest imageRequest = ImageRequestBuilder
                 .newBuilderWithSource(uri)
-                .setAutoRotateEnabled(false) // I don't really understand why need to disable this. but it actually fixes the image is properly rotated according to EXIF data
+                .setAutoRotateEnabled(true)
+                // I don't really understand why need to disable this. but it actually fixes the image is properly rotated according to EXIF dat
+                // fokayx: false to true, fix android exif rotate
                 .build();
 
         pending = Fresco.getImagePipeline().fetchDecodedImage(imageRequest, null);
